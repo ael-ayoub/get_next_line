@@ -1,0 +1,12 @@
+The project tests your understanding of 
+file I/O, memory management 
+(with malloc and free), and handling
+edge cases in a robust way. It's 
+often a good exercise for learning
+about managing dynamic memory in C.
+In short, the project is about
+creating an efficient and correct 
+implementation of a function to read 
+lines from a file descriptor, with careful
+attention to performance 
+and memory management.
