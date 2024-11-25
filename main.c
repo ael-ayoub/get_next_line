@@ -3,9 +3,15 @@
 int main()
 {
 	int fd = open("test.txt",O_RDONLY);
+	//int fd1 = open("ss.txt",O_RDONLY);
 
-	get_next_line(fd);
-	get_next_line(fd);
-	get_next_line(fd);
-	//printf("%s",str);
+
+
+	char *str = get_next_line(fd);
+	printf("%s",str);
+	//printf("%s",dd);  
 }
+
+
+
+
