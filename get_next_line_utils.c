@@ -6,51 +6,84 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:49:11 by ael-aiss          #+#    #+#             */
-/*   Updated: 2024/11/26 10:49:12 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:06:23 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	lenght_line(char *str, int index)
+size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
 	if (!str)
 		return (0);
-	if (str[index] == '\n')
-		return (1);
-	while (str[index] && str[index] != '\n' && index < BUFFER_SIZE)
+	len = 0;
+	while (*str)
 	{
-		i++;
-		index++;
+		len++;
+		str++;
 	}
-	return (i);
+	return (len);
 }
 
-char	*ft_strdup(char *src, int index, size_t len)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*dest;
-	size_t	i;
+	size_t	len1;
+	size_t	len2;
+	char	*result;
 
-	if (!src || len <= 0)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	result = malloc(len1 + len2 + 1);
+	if (!result)
 		return (NULL);
-	dest = (char *)malloc(len + 1);
-	if (!dest)
+	ft_memcpy(result, s1, len1);
+	ft_memcpy(result + len1, s2, len2);
+	result[len1 + len2] = '\0';
+	free(s1);
+	return (result);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	s_len;
+	char	*sub;
+
+	if (!s)
 		return (NULL);
-	i = 0;
-	if (src[index] == '\n' && len == 1)
-	{
-		dest[0] = '\n';
-		i++;
-	}
-	while (i < len && src[index] && src[index] != '\n' && index < BUFFER_SIZE)
-	{
-		dest[i] = src[index];
-		index++;
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	sub = malloc(len + 1);
+	if (!sub)
+		return (NULL);
+	ft_memcpy(sub, s + start, len);
+	sub[len] = '\0';
+	return (sub);
+}
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = dst;
+	s = src;
+	// Copy n bytes from src to dst
+	for (size_t i = 0; i < n; i++)
+		d[i] = s[i];
+	return (dst);
 }

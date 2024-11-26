@@ -6,7 +6,7 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:49:29 by ael-aiss          #+#    #+#             */
-/*   Updated: 2024/11/26 10:53:49 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:15:24 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 17
 # endif
 
-size_t	lenght(char *str);
+size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
-size_t	lenght_line(char *str, int index);
-char	*ft_strdup(char *src, int index, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
 
 #endif
