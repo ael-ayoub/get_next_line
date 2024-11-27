@@ -6,7 +6,7 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:49:11 by ael-aiss          #+#    #+#             */
-/*   Updated: 2024/11/26 17:06:23 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:55:59 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[len] = '\0';
 	return (sub);
 }
+
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
+	size_t				i;
 
+	i = 0;
 	d = dst;
 	s = src;
-	// Copy n bytes from src to dst
-	for (size_t i = 0; i < n; i++)
+	while (i < n)
+	{
 		d[i] = s[i];
+		i++;
+	}
 	return (dst);
 }

@@ -6,12 +6,12 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:49:29 by ael-aiss          #+#    #+#             */
-/*   Updated: 2024/11/26 19:15:24 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:58:57 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GIT_NEXT_LINE_H
-# define GIT_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -19,7 +19,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 17
+#  define BUFFER_SIZE 42
 # endif
 
 size_t	ft_strlen(const char *str);
