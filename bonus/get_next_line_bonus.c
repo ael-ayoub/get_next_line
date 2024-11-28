@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 10:49:19 by ael-aiss          #+#    #+#             */
-/*   Updated: 2024/11/28 21:45:55 by ael-aiss         ###   ########.fr       */
+/*   Created: 2024/11/28 22:15:01 by ael-aiss          #+#    #+#             */
+/*   Updated: 2024/11/28 22:17:09 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -58,10 +58,10 @@ char	*fofo(char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
 	char		temp[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes_read;
+	static char	*buffer[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -71,14 +71,12 @@ char	*get_next_line(int fd)
 		if (bytes_read <= 0)
 			break ;
 		temp[bytes_read] = '\0';
-		if (!buffer)
-			buffer = ft_strdup("");
-		buffer = ft_strjoin(buffer, temp);
-		if (ft_strchr(buffer, '\n'))
+		buffer[fd] = ft_strjoin(buffer[fd], temp);
+		if (ft_strchr(buffer[fd], '\n'))
 			break ;
 	}
-	if (bytes_read <= 0 && !buffer)
+	if (bytes_read <= 0 && !buffer[fd])
 		return (NULL);
-	line = fofo(&buffer);
+	line = fofo(&buffer[fd]);
 	return (line);
 }
